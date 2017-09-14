@@ -13,9 +13,9 @@ db = client.github
 # 	pprint.pprint(db.repos.find_one({'_id':ObjectId(_id)})['name'])
 # fin.close()
 
-for repo in db.repos.find({'name':'Childrens-Council'}):
-	pprint.pprint(repo)
-#pprint.pprint(db.issues.find_one())
+# for repo in db.repos.find({'name':'Childrens-Council'}):
+# 	pprint.pprint(repo)
+pprint.pprint(db.issues.find_one())
 #_id = db.repos.find_one({'name':'gitflow'})['_id']
 #print(_id)
 #5784f0ac6480fd8caa050d64

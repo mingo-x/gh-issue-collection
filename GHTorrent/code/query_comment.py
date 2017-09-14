@@ -43,5 +43,5 @@ while line:
 
 	line = fin.readline()
 
-fin.close
-fout.close
+fin.close()
+fout.close()

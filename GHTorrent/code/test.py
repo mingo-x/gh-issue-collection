@@ -15,7 +15,8 @@ db = client.github
 
 # for repo in db.repos.find({'name':'Childrens-Council'}):
 # 	pprint.pprint(repo)
-pprint.pprint(db.issues.find_one())
+# pprint.pprint(db.issues.find_one())
+pprint.pprint(db.issues.find({'repo':"authlogic_example","owner":"hammed"}).count())
 #_id = db.repos.find_one({'name':'gitflow'})['_id']
 #print(_id)
 #5784f0ac6480fd8caa050d64

@@ -2,9 +2,16 @@ from pymongo import MongoClient, ASCENDING
 import pprint
 import time
 import json
+import sys
+import helper
 
+# settings
+break_point, start_repo, start_user = helper.breakpoint_set(sys.argv)
+out_open_mode = "w"
+if break_point:
+	out_open_mode = "a"
 fin = open("./data/issues_0.out","r")
-fout = open("./data/comments_0.out","w",encoding='utf-8')
+fout = open("./data/comments_0.out",out_open_mode,encoding='utf-8')
 
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
 db = client.github
@@ -15,6 +22,10 @@ line = fin.readline()
 while line:
 	# read in repo
 	repo = json.loads(line)
+	if break_point:
+		if repo['name']==start_repo and repo['owner']==start_user:
+			break_point = False
+		continue
 	issue_num = repo['issues']
 	for i in range(0,issue_num):
 		issue_line = fin.readline()

@@ -3,32 +3,16 @@ import pprint
 import time
 import json
 import sys
+import helper
 
-break_point = False
-start_repo = ""
-start_user = ""
-if len(sys.argv)<3:
-	print("please specify whether starts from breakpoint by \"-b x\" (x: 0 for no, 1 for yes)")
-	exit()
-for i in range(1,len(sys.argv),2):
-	if sys.argv[i] == '-b':
-		if sys.argv[i+1] == '1':
-			break_point = True;
-		break;
-
-if break_point and len(sys.argv)<7:
-	print("please specify starting repo by \"-r reponame -u username\"")
-	exit()
-
+# settings
+break_point, start_repo, start_user = helper.breakpoint_set(sys.argv)
+out_open_mode = "w"
 if break_point:
-	for i in range(1,len(sys.argv),2):
-		if sys.argv[i] == '-r':
-			start_repo = sys.argv[i+1]
-		elif sys.argv[i] == '-u':
-			start_user = sys.argv[i+1]
+	out_open_mode = "a"
 
 fin = open("./data/repos_0.out","r")
-fout = open("./data/issues_1.out","w",encoding='utf-8')
+fout = open("./data/issues_1.out",out_open_mode,encoding='utf-8')
 
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
 db = client.github

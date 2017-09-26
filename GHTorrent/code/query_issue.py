@@ -12,7 +12,7 @@ if break_point:
 	out_open_mode = "a"
 
 fin = open("./data/repos_0.out","r")
-fout = open("./data/issues_1.out",out_open_mode,encoding='utf-8')
+fout = open("./data/issues_0.out",out_open_mode,encoding='utf-8')
 
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
 db = client.github

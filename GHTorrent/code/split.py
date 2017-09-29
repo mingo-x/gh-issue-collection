@@ -5,13 +5,13 @@ dir_name = "/mnt/ds3lab/yanping"
 in_idx = "0"
 idx = 1
 for i in range(1,len(sys.argv)):
-	if sys.argv[i] is "-o":
+	if sys.argv[i] == "-o":
 		idx = int(sys.argv[i+1])
 		print("out idx =",idx)
-	elif sys.argv[i] is "-d":
+	elif sys.argv[i] == "-d":
 		dir_name = sys.argv[i+1]
 		print("dir name =",dir_name)
-	elif sys.argv[i] is "-i":
+	elif sys.argv[i] == "-i":
 		in_idx = sys.argv[i+1]
 		print("in idx =",in_idx)
 

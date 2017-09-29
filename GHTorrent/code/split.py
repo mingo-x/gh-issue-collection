@@ -13,7 +13,7 @@ while line:
 		fout = open(dir_name+"/data/comments_"+str(idx)+".out","w",encoding='utf-8')
 		counter = 0
 	counter = counter+1
-	if counter == 10000:
+	if counter%10000 == 0:
 		print(idx,counter)
 	fout.write(line)
 	issue_line = fin.readline()

@@ -1,16 +1,26 @@
 import json
+import sys
 
 dir_name = "/mnt/ds3lab/yanping"
+in_idx = 0
 idx = 1
-fin = open(dir_name+"/data/comments_0.out","r")
-fout = open(dir_name+"/data/comments_"+str(idx)+".out","w",encoding='utf-8')
+for i in range(1,len(sys.argv)):
+	if sys.argv[i] is "-o":
+		idx = int(sys.argv[i+1])
+	elif sys.argv[i] is "-d":
+		dir_name = sys.argv[i+1]
+	elif sys.argv[i] is "-i":
+		in_idx = sys.argv[i+1]
+
+fin = open(dir_name+"/data/comments_"+in_idx+".out","r")
+fout = open(dir_name+"/data/comments_"+str(idx)+".out","a",encoding='utf-8')
 line = fin.readline()
 counter = 0
 while line:
 	if counter == 100000:
 		idx = idx+1
 		fout.close()
-		fout = open(dir_name+"/data/comments_"+str(idx)+".out","w",encoding='utf-8')
+		fout = open(dir_name+"/data/comments_"+str(idx)+".out","a",encoding='utf-8')
 		counter = 0
 	counter = counter+1
 	if counter%10000 == 0:

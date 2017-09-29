@@ -7,7 +7,7 @@ fout = open(dir_name+"/data/comments_"+str(idx)+".out","w",encoding='utf-8')
 line = fin.readline()
 counter = 0
 while line:
-	if counter == 500000:
+	if counter == 100000:
 		idx = idx+1
 		fout.close()
 		fout = open(dir_name+"/data/comments_"+str(idx)+".out","w",encoding='utf-8')

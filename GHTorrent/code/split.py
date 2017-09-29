@@ -2,15 +2,18 @@ import json
 import sys
 
 dir_name = "/mnt/ds3lab/yanping"
-in_idx = 0
+in_idx = "0"
 idx = 1
 for i in range(1,len(sys.argv)):
 	if sys.argv[i] is "-o":
 		idx = int(sys.argv[i+1])
+		print("out idx =",idx)
 	elif sys.argv[i] is "-d":
 		dir_name = sys.argv[i+1]
+		print("dir name =",dir_name)
 	elif sys.argv[i] is "-i":
 		in_idx = sys.argv[i+1]
+		print("in idx =",in_idx)
 
 fin = open(dir_name+"/data/comments_"+in_idx+".out","r")
 fout = open(dir_name+"/data/comments_"+str(idx)+".out","a",encoding='utf-8')

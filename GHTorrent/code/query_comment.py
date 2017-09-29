@@ -30,7 +30,8 @@ while line:
 			issue_line = fin.readline()
 		line = fin.readline()
 		continue
-	
+	if issue_num != 0:
+		fout.write(line)
 	for i in range(0,issue_num):
 		issue_line = fin.readline()
 		#print(issue_line,flush=True)
@@ -51,7 +52,6 @@ while line:
 				end_time = time.time()
 				print("milestone",issue_count,"time",int(end_time-start_time),flush = True)
 				start_time = time.time()
-			fout.write(line)
 			fout.write(issue_line[:len(issue_line)-2]+",\"comments\":"+str(len(comment_buffer))+"}\n")
 			for comment in comment_buffer:
 				fout.write("{\"body\":"+json.dumps(comment['body'])+",\"owner\":\""+comment['user']['login']+"\",\"created_at\":\""+comment['created_at']+"\"}\n")

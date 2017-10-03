@@ -5,14 +5,15 @@ import json
 import sys
 import helper
 
+dir_path = "/mnt/ds3lab/yanping/"
 # settings
 break_point, start_repo, start_user = helper.breakpoint_set(sys.argv)
 out_open_mode = "w"
 if break_point:
 	out_open_mode = "a"
 
-fin = open("./data/repos_0.out","r")
-fout = open("./data/issues_0.out",out_open_mode,encoding='utf-8')
+fin = open(dir_path+"data/repos_1.out","r")
+fout = open(dir_path+"data/issues_1.out",out_open_mode,encoding='utf-8')
 
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
 db = client.github

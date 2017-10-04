@@ -6,10 +6,11 @@ import sys
 import helper
 
 # settings
+dir_path = "/mnt/ds3lab/yanping/"
 idx = "0"
-fin = open("./data/issues_"+idx+".out","r")
-fout = open("./data/comments_"+idx+".out",'w',encoding='utf-8')
-flog = open("./log/comments_"+idx+".out",'w',encoding='utf-8')
+fin = open(dir_path+"data/issues_"+idx+".out","r")
+fout = open(dir_path+"data/comments_"+idx+".out",'w',encoding='utf-8')
+flog = open(dir_path+"log/comments_"+idx+".out",'w',encoding='utf-8')
 
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
 db = client.github

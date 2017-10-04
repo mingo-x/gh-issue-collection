@@ -36,7 +36,7 @@ while line:
 			start_time = time.time()
 		continue
 	else:
-		fout.write(issue_line[:len(issue_line)-2]+",\"comments\":"+str(len(comment_buffer))+"}\n")
+		fout.write(line[:len(line)-2]+",\"comments\":"+str(len(comment_buffer))+"}\n")
 		for comment in comment_buffer:
 			fout.write("{\"owner\":\""+comment['user']['login']+"\",\"body\":"+json.dumps(comment['body'])+",\"created_at\":\""+comment['created_at']+"\"}\n")
 	

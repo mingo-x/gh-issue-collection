@@ -22,7 +22,7 @@ issue_total = 0
 start_time = time.time()
 for line in fin:
 	repo = json.loads(line)
-	#"name":"1CUnit","owner":"kuntashov"
+	#"name":"grunt-bowerful","owner":"gyllstromk"
 	if break_point:
 		if repo['name']==start_repo and repo['owner']==start_user:
 			break_point = False

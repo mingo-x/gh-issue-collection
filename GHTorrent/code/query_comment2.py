@@ -29,7 +29,7 @@ while line:
 		comment_buffer.append(comment)
 
 	if len(users)<=1:
-		flog.write(issue_count)
+		flog.write(str(issue_count))
 		if issue_count%10000==0:
 			end_time = time.time()
 			print("milestone",issue_count,"time",int(end_time-start_time),flush = True)
@@ -40,7 +40,7 @@ while line:
 		for comment in comment_buffer:
 			fout.write("{\"owner\":\""+comment['user']['login']+"\",\"body\":"+json.dumps(comment['body'])+",\"created_at\":\""+comment['created_at']+"\"}\n")
 	
-	flog.write(issue_count)
+	flog.write(str(issue_count))
 	if issue_count%10000==0:
 		end_time = time.time()
 		print("milestone",issue_count,"time",int(end_time-start_time),flush = True)

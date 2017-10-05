@@ -4,7 +4,7 @@ import sys
 dir_name = "/mnt/ds3lab/yanping"
 in_idx = "0"
 idx = 13
-unit = 200000
+unit = 100000
 for i in range(1,len(sys.argv)):
 	if sys.argv[i] == "-o":
 		idx = int(sys.argv[i+1])
@@ -38,6 +38,8 @@ while line:
 		line = fin.readline()
 		fout.write(line)
 	line = fin.readline()
+
+print("total:",counter)
 
 fin.close()	
 fout.close()

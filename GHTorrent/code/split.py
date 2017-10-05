@@ -2,9 +2,9 @@ import json
 import sys
 
 dir_name = "/mnt/ds3lab/yanping"
-in_idx = "x"
-idx = 0
-unit = 400000
+in_idx = "0"
+idx = 13
+unit = 200000
 for i in range(1,len(sys.argv)):
 	if sys.argv[i] == "-o":
 		idx = int(sys.argv[i+1])
@@ -19,20 +19,24 @@ for i in range(1,len(sys.argv)):
 		unit = int(sys.argv[i+1])
 		print("file unit =",unit)
 
-fin = open(dir_name+"/data/issues_"+in_idx+".out","r")
-fout = open(dir_name+"/data/issues_"+str(idx)+".out","a",encoding='utf-8')
+fin = open(dir_name+"/data/comments_"+in_idx+".out","r")
+fout = open(dir_name+"/data/comments_"+str(idx)+".out","a",encoding='utf-8')
 line = fin.readline()
 counter = 0
 while line:
 	if counter == unit:
 		idx = idx+1
 		fout.close()
-		fout = open(dir_name+"/data/issues_"+str(idx)+".out","a",encoding='utf-8')
+		fout = open(dir_name+"/data/comments_"+str(idx)+".out","a",encoding='utf-8')
 		counter = 0
 	counter = counter+1
 	if counter%100000 == 0:
 		print(idx,counter)
 	fout.write(line)
+	issue = json.loads(line)
+	for i in range(issue['comments']):
+		line = fin.readline()
+		fout.write(line)
 	line = fin.readline()
 
 fin.close()	

@@ -8,6 +8,9 @@ import helper
 # settings
 dir_path = "/mnt/ds3lab/yanping/"
 idx = "0"
+for i in range(1,len(sys.argv),2):
+	if sys.argv[i]=="-i":
+		idx = sys.argv[i+1]
 fin = open(dir_path+"data/issues_"+idx+".out","r")
 fout = open(dir_path+"data/comments_"+idx+".out",'w',encoding='utf-8')
 flog = open(dir_path+"log/comments_"+idx+".out",'w',encoding='utf-8')
@@ -40,7 +43,9 @@ while line:
 		for comment in comment_buffer:
 			fout.write("{\"owner\":\""+comment['user']['login']+"\",\"body\":"+json.dumps(comment['body'])+",\"created_at\":\""+comment['created_at']+"\"}\n")
 	
+	fout.flush()
 	flog.write(str(issue_count)+"\n")
+	flog.flush()
 	if issue_count%10000==0:
 		end_time = time.time()
 		print("milestone",issue_count,"time",int(end_time-start_time),flush = True)

@@ -15,6 +15,7 @@ for i in range(1,len(sys.argv),2):
 		print("idx:",idx)
 	elif sys.argv[i]=="-s":
 		skip_num = int(sys.argv[i+1])
+		print("skip:",skip_num)
 fin = open(dir_path+"data/issues_"+idx+".out","r")
 fout = open(dir_path+"data/comments_"+idx+".out",'a',encoding='utf-8')
 flog = open(dir_path+"log/comments_"+idx+".out",'a',encoding='utf-8')

@@ -20,7 +20,7 @@ db = client.github
 
 issue_count = 0
 start_time = time.time()
-while line in fin:
+for line in fin:
 	issue = json.loads(line)
 	issue_count = issue_count+1
 	comments = db.issue_comments.find({"repo":issue['repo'],"owner":issue['repo_owner'],"issue_id":issue['number']}).sort('created_at',ASCENDING)

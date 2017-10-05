@@ -20,11 +20,10 @@ db = client.github
 
 issue_count = 0
 start_time = time.time()
-line = fin.readline()
-while line:
+while line in fin:
 	issue = json.loads(line)
 	issue_count = issue_count+1
-	comments = db.issue_comments.find({"issue_id":issue['number'],"repo":issue['repo'],"owner":issue['repo_owner']}).sort('created_at',ASCENDING)
+	comments = db.issue_comments.find({"repo":issue['repo'],"owner":issue['repo_owner'],"issue_id":issue['number']}).sort('created_at',ASCENDING)
 	comment_buffer = []
 	users = set()
 	for comment in comments:
@@ -50,7 +49,6 @@ while line:
 		end_time = time.time()
 		print("milestone",issue_count,"time",int(end_time-start_time),flush = True)
 		start_time = time.time()
-	line = fin.readline()
 
 fin.close()
 fout.close()

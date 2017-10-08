@@ -25,7 +25,7 @@ for idx in range(12):
 			counter = 0
 		counter = counter+1
 		if counter%10000 == 0:
-			print(idx,out_idx,counter,flush=true)
+			print(idx,out_idx,counter,flush=True)
 		fout.write(line)
 		issue = json.loads(line)
 		for i in range(issue['comments']):

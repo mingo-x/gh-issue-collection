@@ -12,7 +12,7 @@ for i in range(1,len(sys.argv)):
 		end = int(sys.argv[i+1])
 		print("end by file", end)
 dir_path = "/mnt/ds3lab/yanping/data/"
-fout = [open(dir_path+"comments_shuffled_"+str(out_idx)+".out",'w',encoding='utf-8') for out_idx in range(12)]
+fout = [open(dir_path+"comments_shuffled_"+str(out_idx)+".out",'a',encoding='utf-8') for out_idx in range(12)]
 #4 to 22
 for idx in range(start,end+1):
 	counter = 0

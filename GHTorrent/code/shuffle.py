@@ -16,7 +16,7 @@ for idx in range(4,23):
 			fout = open(dir_path+"comments_shuffled_"+str(out_idx)+".out",'w',encoding='utf-8')
 			counter = 0
 		counter = counter+1
-		if counter%100000 == 0:
+		if counter%10000 == 0:
 			print(idx,out_idx,counter)
 		fout.write(line)
 		issue = json.loads(line)

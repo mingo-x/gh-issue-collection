@@ -15,7 +15,7 @@ out_idx = 0
 fout = open(dir_name+"/data/comments_batch_"+str(out_idx)+".out","w",encoding='utf-8')
 counter = 0
 for idx in range(12):
-	fin = open(dir_name+"/data/comments_shuffled_"+idx+".out","r")
+	fin = open(dir_name+"/data/comments_shuffled_"+str(idx)+".out","r")
 	line = fin.readline()
 	while line:
 		if counter == unit:

@@ -21,7 +21,7 @@ for idx in range(start,end+1):
 	while line:
 		out_idx = random.randint(0,11)
 		counter = counter + 1
-		print(idx,counter,flush=True)
+		print(idx,out_idx,counter,flush=True)
 		fout[out_idx].write(line)
 		issue = json.loads(line)
 		for i in range(issue['comments']):

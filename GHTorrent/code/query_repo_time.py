@@ -18,7 +18,7 @@ for i in range(27):
 		if counter%10000 == 0:
 			print(i,counter,flush=True)
 		issue = json.loads(line)
-		repo = db.repos.findOne({"name":issue['repo'],"owner.login":issue['repo_owner']})
+		repo = db.repos.find_one({"name":issue['repo'],"owner.login":issue['repo_owner']})
 		fout.write(line[:-2]+",\"repo_time\":"+repo["created_at"]+"}\n")
 		for j in range(issue['comments']):
 			line = fin.readline()

@@ -8,6 +8,7 @@ dir_name = "/mnt/ds3lab/yanping"
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
 db = client.github
 counter = 0
+none_counter = 0
 for i in range(27):
 	print("file",i)
 	fin = open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8')
@@ -19,11 +20,14 @@ for i in range(27):
 			print(i,counter,flush=True)
 		issue = json.loads(line)
 		repo = db.repos.find_one({"name":issue['repo'],"owner.login":issue['repo_owner']})
-		pprint.pprint(repo)
-		fout.write(line[:-2]+",\"repo_time\":"+repo["created_at"]+"}\n")
+		if repo == None:
+			none_counter += 1
+		else:
+			fout.write(line[:-2]+",\"repo_time\":"+repo["created_at"]+"}\n")
 		for j in range(issue['comments']):
 			line = fin.readline()
-			fout.write(line)
+			if repo != None:
+				fout.write(line)
 		line = fin.readline()
 	fin.close()
 	fout.close()

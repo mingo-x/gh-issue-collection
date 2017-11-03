@@ -11,7 +11,7 @@ counter = 0
 for i in range(27):
 	print("file",i)
 	fin = open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8')
-	fout = open(dir_name+"/data/issue/issues_"+str(out_idx)+".txt","w",encoding='utf-8')
+	fout = open(dir_name+"/data/issue/issues_"+str(i)+".txt","w",encoding='utf-8')
 	line = fin.readline()
 	while line:
 		counter += 1

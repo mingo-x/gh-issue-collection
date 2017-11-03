@@ -1,8 +1,5 @@
 from pymongo import MongoClient
-import pprint
-import time
 import json
-import sys
 
 dir_name = "/mnt/ds3lab/yanping"
 client = MongoClient('mongodb://127.0.0.1:27017/',unicode_decode_error_handler='ignore')
@@ -17,7 +14,7 @@ for i in range(27):
 	while line:
 		counter += 1
 		if counter%10000 == 0:
-			print(i,counter,flush=True)
+			print(i,counter,none_counter,flush=True)
 		issue = json.loads(line)
 		repo = db.repos.find_one({"name":issue['repo'],"owner.login":issue['repo_owner']})
 		if repo == None:

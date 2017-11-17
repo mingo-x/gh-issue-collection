@@ -2,13 +2,9 @@ import json
 import sys
 import os
 
-def annotate():
-	dir_name = "/mnt/ds3lab/yanping"
+def annotate(fin,fout):
 	counter = 0
-	i = 0
 	append = False
-	fin = open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8')
-	fout = open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8')
 	line = fin.readline()
 
 	while line:
@@ -38,15 +34,21 @@ def annotate():
 			cont = input("continue?")
 			fout.flush()
 			if cont != "":
-				fin.close()
-				fout.flush()
+				#fin.close()
+				#fout.flush()
 				#os.fsync(fout.fileno())
-				fout.close()
+				#fout.close()
 				return
 		line = fin.readline()
+	
+
+if __name__ == "__main__":
+	dir_name = "/mnt/ds3lab/yanping"
+	i = 0
+	fin = open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8')
+	fout = open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8')
+	annotate()
 	fin.close()
 	fout.close()
 
-if __name__ == "__main__":
-	annotate()
 

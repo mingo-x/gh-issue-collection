@@ -1,4 +1,5 @@
 import json
+import sys
 
 dir_name = "/mnt/ds3lab/yanping"
 counter = 0
@@ -35,7 +36,7 @@ while line:
 			fout.flush()
 			fin.close()
 			fout.close()
-			exit()
+			sys.exit
 	line = fin.readline()
 fout.flush()
 fin.close()

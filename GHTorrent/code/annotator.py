@@ -1,12 +1,7 @@
 import json
 import sys
-import atexit
+import os
 
-def save_file(fin,fout):
-	fout.flush()
-	fout.close()
-	fin.close()
-	
 dir_name = "/mnt/ds3lab/yanping"
 counter = 0
 i = 0
@@ -14,7 +9,7 @@ append = False
 fin = open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8')
 fout = open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8')
 line = fin.readline()
-atexit.register(save_file,fin,fout)
+
 while line:
 	issue = json.loads(line)
 	if 'l' in issue:
@@ -42,11 +37,12 @@ while line:
 		cont = input("continue?")
 		fout.flush()
 		if cont != "":
-			#fin.close()
-			#fout.close()
+			fin.close()
+			fout.flush()
+			os.fsync(fout.fileno())
+			fout.close()
 			sys.exit()
 	line = fin.readline()
-fout.flush()
 fin.close()
 fout.close()
 

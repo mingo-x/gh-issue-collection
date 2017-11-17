@@ -9,7 +9,6 @@ def annotate():
 	with open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8') as fin, open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8') as fout:
 		counter = 0
 		append = False
-
 		line = fin.readline()
 
 		while line:
@@ -20,40 +19,34 @@ def annotate():
 					for j in range(issue['comments']):
 						line = fin.readline()
 						fout.write(line)
-				#fout.flush()
-				#fout.flush()
-				#os.fsync(fout.fileno())
 			else:
 				counter += 1
 				print("no.",counter)
 				print(line)
+				issue_line = line
 				comments = []
 				for j in range(issue['comments']):
 					line = fin.readline()
 					comments.append(line)
-					print(comments[len(comments)-1])
-				#label = input("label:")
-				#while label<'0' or label>'9':
-				#	label = input("label 0~9:")
-				#fout.write(line[:-2]+",\"l\":"+label+"}\n")
-				fout.write(line)
+					print(line)
+				label = input("label:")
+				while label<'0' or label>'9':
+					label = input("label 0~9:")
+				fout.write(issue_line[:-2]+",\"l\":"+label+"}\n")
+				
 				for j in range(issue['comments']):
 					fout.write(comments[j])
 				cont = input("continue?")
-				# fout.flush()
-				# os.fsync(fout.fileno())
 				if cont != "":
-					#fin.close()
+					fin.close()
 					fout.flush()
 					os.fsync(fout.fileno())
-					#time.sleep(2)
-					#fout.close()
-					return ""
+					fout.close()
+					return
 			line = fin.readline()
 	
 
 if __name__ == "__main__":
-	
 		annotate()
 		#time.sleep(5)
 		#fin.close()

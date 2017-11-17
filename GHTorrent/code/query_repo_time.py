@@ -19,6 +19,7 @@ for i in range(27):
 		repo = db.repos.find_one({"name":issue['repo'],"owner.login":issue['repo_owner']})
 		if repo == None:
 			none_counter += 1
+			#fout.write(line)
 		else:
 			fout.write(line[:-2]+",\"repo_time\":"+repo["created_at"]+"}\n")
 		for j in range(issue['comments']):

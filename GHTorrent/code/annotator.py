@@ -47,7 +47,7 @@ def annotate(mode):
 	
 
 if __name__ == "__main__":
-		mode = "w"
+		mode = "a"
 		annotate(mode)
 
 

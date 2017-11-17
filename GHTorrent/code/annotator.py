@@ -15,7 +15,7 @@ def annotate(mode,line_start):
 
 		while line:
 			issue = json.loads(line)
-			if 'l' in issue or line_count <= line_start:
+			if 'l' in issue or line_count < line_start:
 				if not append:
 					fout.write(line)
 				for j in range(issue['comments']):

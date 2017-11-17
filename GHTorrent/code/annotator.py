@@ -32,9 +32,11 @@ while line:
 			fout.write(comments[j])
 		cont = input("continue?")
 		if cont != "":
+			fout.flush()
 			fin.close()
 			fout.close()
 			exit()
 	line = fin.readline()
+fout.flush()
 fin.close()
 fout.close()

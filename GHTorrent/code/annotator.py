@@ -8,7 +8,7 @@ def annotate(fin,fout):
 	append = False
 	line = fin.readline()
 
-	while line:
+	while counter < 1:
 		issue = json.loads(line)
 		if 'l' in issue:
 			if not append:

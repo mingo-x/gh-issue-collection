@@ -45,7 +45,7 @@ def annotate(fin,fout):
 if __name__ == "__main__":
 	dir_name = "/mnt/ds3lab/yanping"
 	i = 0
-	with open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8') as fin, open(dir_name+"/data/annotation/"+str(i)+".txt","w",0,encoding='utf-8') as fout:
+	with open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8') as fin, open(dir_name+"/data/annotation/"+str(i)+".txt","wb",0) as fout:
 		annotate(fin,fout)
 		#fout.flush()
 		#os.fsync(fout.fileno())

@@ -1,6 +1,7 @@
 import json
 import sys
 import os
+import time
 
 def annotate(fin,fout):
 	counter = 0
@@ -50,6 +51,7 @@ if __name__ == "__main__":
 	i = 0
 	with open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8') as fin, open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8') as fout:
 		annotate(fin,fout)
+		time.sleep(5)
 		print("exit")
 		fout.flush()
 		os.fsync(fout.fileno())

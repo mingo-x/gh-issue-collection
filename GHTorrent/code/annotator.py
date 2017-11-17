@@ -31,11 +31,12 @@ def annotate():
 				for j in range(issue['comments']):
 					line = fin.readline()
 					comments += line
-					print(line)
+					print(comments[len(comments)-1])
 				#label = input("label:")
 				#while label<'0' or label>'9':
 				#	label = input("label 0~9:")
 				#fout.write(line[:-2]+",\"l\":"+label+"}\n")
+				fout.write(line)
 				for j in range(issue['comments']):
 					fout.write(comments[j])
 				cont = input("continue?")

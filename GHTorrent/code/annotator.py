@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 
 def annotate(mode,line_start):
 	dir_name = "/mnt/ds3lab/yanping"
@@ -52,6 +53,9 @@ def annotate(mode,line_start):
 if __name__ == "__main__":
 		mode = "a"
 		line_start = 1158
+		for i in range(1,len(sys.argv),2):
+			if(sys.argv[i]=="-l"):
+				line_start = int(sys.argv[i+1])
 		annotate(mode,line_start)
 
 

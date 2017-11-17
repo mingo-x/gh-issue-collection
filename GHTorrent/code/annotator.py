@@ -15,7 +15,7 @@ def annotate(fin,fout):
 				for j in range(issue['comments']):
 					line = fin.readline()
 					fout.write(line)
-			fout.flush()
+			#fout.flush()
 		else:
 			counter += 1
 			print("no.",counter)

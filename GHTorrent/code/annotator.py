@@ -12,8 +12,7 @@ def annotate():
 
 		line = fin.readline()
 
-		while counter < 50:
-			counter += 1
+		while line:
 			issue = json.loads(line)
 			if 'l' in issue:
 				if not append:
@@ -39,16 +38,16 @@ def annotate():
 				#fout.write(line[:-2]+",\"l\":"+label+"}\n")
 				for j in range(issue['comments']):
 					fout.write(comments[j])
-				# cont = input("continue?")
+				cont = input("continue?")
 				# fout.flush()
 				# os.fsync(fout.fileno())
-				# if cont != "":
-				# 	#fin.close()
-				# 	fout.flush()
-				# 	os.fsync(fout.fileno())
-				# 	time.sleep(2)
-				# 	#fout.close()
-				# 	return ""
+				if cont != "":
+					#fin.close()
+					fout.flush()
+					os.fsync(fout.fileno())
+					#time.sleep(2)
+					#fout.close()
+					return ""
 			line = fin.readline()
 	
 

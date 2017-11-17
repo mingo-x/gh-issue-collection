@@ -1,4 +1,3 @@
-from pymongo import MongoClient
 import json
 
 dir_name = "/mnt/ds3lab/yanping"

@@ -17,8 +17,8 @@ def annotate(fin,fout):
 					line = fin.readline()
 					fout.write(line)
 			#fout.flush()
-			fout.flush()
-			os.fsync(fout.fileno())
+			#fout.flush()
+			#os.fsync(fout.fileno())
 		else:
 			counter += 1
 			print("no.",counter)
@@ -39,8 +39,9 @@ def annotate(fin,fout):
 			os.fsync(fout.fileno())
 			if cont != "":
 				#fin.close()
-				#fout.flush()
-				#os.fsync(fout.fileno())
+				fout.flush()
+				os.fsync(fout.fileno())
+				time.sleep(2)
 				#fout.close()
 				return
 		line = fin.readline()
@@ -51,7 +52,7 @@ if __name__ == "__main__":
 	i = 0
 	with open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8') as fin, open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8') as fout:
 		annotate(fin,fout)
-		time.sleep(5)
+		#time.sleep(5)
 		print("exit")
 		fout.flush()
 		os.fsync(fout.fileno())

@@ -16,6 +16,8 @@ def annotate(fin,fout):
 					line = fin.readline()
 					fout.write(line)
 			#fout.flush()
+			fout.flush()
+			os.fsync(fout.fileno())
 		else:
 			counter += 1
 			print("no.",counter)
@@ -32,7 +34,8 @@ def annotate(fin,fout):
 			for j in range(issue['comments']):
 				fout.write(comments[j])
 			cont = input("continue?")
-			#fout.flush()
+			fout.flush()
+			os.fsync(fout.fileno())
 			if cont != "":
 				#fin.close()
 				#fout.flush()

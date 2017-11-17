@@ -16,8 +16,9 @@ def annotate(mode):
 			if 'l' in issue:
 				if not append:
 					fout.write(line)
-					for j in range(issue['comments']):
-						line = fin.readline()
+				for j in range(issue['comments']):
+					line = fin.readline()
+					if not append:
 						fout.write(line)
 			else:
 				counter += 1

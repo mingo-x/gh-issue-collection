@@ -16,6 +16,7 @@ while line:
 			for j in range(issue['comments']):
 				line = fin.readline()
 				fout.write(line)
+		fout.flush()
 	else:
 		counter += 1
 		print("no.",counter)
@@ -32,11 +33,11 @@ while line:
 		for j in range(issue['comments']):
 			fout.write(comments[j])
 		cont = input("continue?")
+		fout.flush()
 		if cont != "":
-			fout.flush()
 			fin.close()
 			fout.close()
-			sys.exit
+			sys.exit()
 	line = fin.readline()
 fout.flush()
 fin.close()

@@ -48,6 +48,8 @@ if __name__ == "__main__":
 	fin = open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8')
 	fout = open(dir_name+"/data/annotation/"+str(i)+".txt","w",encoding='utf-8')
 	annotate(fin,fout)
+	fout.flush()
+	os.fsync(fout.fileno())
 	fin.close()
 	fout.close()
 

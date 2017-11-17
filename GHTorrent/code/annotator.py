@@ -12,8 +12,8 @@ def annotate():
 
 		line = fin.readline()
 
-		while counter < 3:
-			
+		while counter < 50:
+			counter += 1
 			issue = json.loads(line)
 			if 'l' in issue:
 				if not append:

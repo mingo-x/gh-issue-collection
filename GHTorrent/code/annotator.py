@@ -1,11 +1,12 @@
 import json
 import os
 
-def annotate(mode):
+def annotate(mode,line_start):
 	dir_name = "/mnt/ds3lab/yanping"
 	i = 0
 	with open(dir_name+"/data/comments_batch_"+str(i)+".out","r",encoding='utf-8') as fin, open(dir_name+"/data/annotation/"+str(i)+".txt",mode,encoding='utf-8') as fout:
 		counter = 0
+		line_count = 0
 		append = True
 		if mode == "w":
 			append = False
@@ -13,7 +14,7 @@ def annotate(mode):
 
 		while line:
 			issue = json.loads(line)
-			if 'l' in issue:
+			if 'l' in issue || line_count <= line_start:
 				if not append:
 					fout.write(line)
 				for j in range(issue['comments']):
@@ -44,11 +45,13 @@ def annotate(mode):
 					os.fsync(fout.fileno())
 					fout.close()
 					return
+			line_count += 1+issue['comments']
 			line = fin.readline()
 	
 
 if __name__ == "__main__":
 		mode = "w"
-		annotate(mode)
+		line_start = 1158
+		annotate(mode,line_start)
 
 

@@ -30,7 +30,7 @@ def annotate():
 				comments = []
 				for j in range(issue['comments']):
 					line = fin.readline()
-					comments += line
+					comments.append(line)
 					print(comments[len(comments)-1])
 				#label = input("label:")
 				#while label<'0' or label>'9':

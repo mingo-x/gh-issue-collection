@@ -24,7 +24,7 @@ def annotate(mode,line_start):
 						fout.write(line)
 			else:
 				counter += 1
-				print("no.",counter)
+				print("no.",counter,"------------")
 				print(line)
 				issue_line = line
 				comments = []

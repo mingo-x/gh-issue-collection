@@ -28,8 +28,8 @@ with open(path_in,"r") as fin, open(path_pos,"w") as fpos, open(path_neg,"w") as
 		fout.write("<b>time</b>:"+issue["created_at"]+" <b>user</b>:"+issue["owner"]+"\n")
 		# post
 		print(issue["body"])
-		print(json.loads(issue["body"]))
-		fout.write("<b>post</b>:"+json.loads(issue["body"])+"\n")
+		#print(json.loads(issue["body"]))
+		fout.write("<b>post</b>:"+issue["body"]+"\n")
 
 		for i in range(issue["comments"]):
 			comment_line = fin.readline()
